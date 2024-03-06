@@ -876,23 +876,6 @@ PyAPI_FUNC(PyObject*) _PyUnicode_DecodeUnicodeEscapeInternal(
                                               string. */
 );
 
-/*
- * START Anaconda (tkoch):
- *
- * For compatibility with packages like typed_ast and mypy compiled against
- * Python 3.9.7.
- */
-PyAPI_FUNC(PyObject*) _PyUnicode_DecodeUnicodeEscape(
-        const char *string,     /* Unicode-Escape encoded string */
-        Py_ssize_t length,      /* size of string */
-        const char *errors,     /* error handling */
-        const char **first_invalid_escape  /* on return, points to first
-                                              invalid escaped char in
-                                              string. */
-);
-
-/* Anaconda END */
-
 Py_DEPRECATED(3.3) PyAPI_FUNC(PyObject*) PyUnicode_EncodeUnicodeEscape(
     const Py_UNICODE *data,     /* Unicode char buffer */
     Py_ssize_t length           /* Number of Py_UNICODE chars to encode */
