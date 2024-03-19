@@ -1,0 +1,63 @@
+/* style.css */
+.imgContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.imgContainer img {
+    width: 50%;
+    height: auto;
+    margin-right: 20px;
+}
+
+.contactContainer {
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+}
+
+.contactContainer form {
+    margin: 30px auto;
+}
+
+#prediction-result {
+    text-align: center;
+    margin-top: 20px;
+    height: 200px;
+    overflow-y: auto;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.buttonHolder {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: calc(100% - 24px); 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 1.5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type="submit"],
+button {
+    background-color: gray;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 1.5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: white;
+    color: gray;
+}
