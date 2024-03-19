@@ -1,5 +1,5 @@
 from src.WheatKernelClassification.pipelines.prediction_pipeline import CustomData,PredictPipeline
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from src.WheatKernelClassification.logger import logging
 
 app = Flask(__name__)
@@ -35,7 +35,9 @@ def predict_datapoint():
         variety_labels = {3: 'Canadian', 2: 'Rosa', 1:'Kama'}
         predicted_label = variety_labels[pred[0]]
 
-        return render_template('result.html', final_result = predicted_label)
-
-app.run()
+        #return render_template('result.html', final_result = predicted_label)
+        return jsonify({'result': predicted_label})
+    
+if __name__ == '__main__':
+    app.run(debug=True)
 

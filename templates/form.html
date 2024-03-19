@@ -1,6 +1,11 @@
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheat Kernel Classification</title>
+</head>
 <body>
-<form action="{{url_for('predict_datapoint')}}" method="POST">
+<form id="prediction-form" action="{{url_for('predict_datapoint')}}" method="POST">
     <div class="form-group">
         <label for="area">Area:</label>
         <input type="text" id="area" name="area" placeholder="Enter Area (float)">
@@ -38,8 +43,31 @@
     </div>
 
     <div style="clear: both;"></div>
-        <input type="submit" value="submit">
-
+    <input type="submit" value="submit">
+    <button type="button" onclick="clearForm()">Clear</button>
 </form>
+
+<div id="prediction-result"></div>
+
+<script>
+    function clearForm() {
+        document.getElementById('prediction-form').reset();
+    }
+    
+    document.getElementById('prediction-form').addEventListener('submit',function(event) {
+        event.preventDefault();
+
+        fetch('{{ url_for('predict_datapoint') }}', {
+            method: 'POST',
+            body: new FormData(this),
+        })
+        .then(Response => Response.json())
+        .then(data => {
+            document.getElementById('prediction-result').innerHTML = `Predicted variety: ${data.result}`;
+
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
 </body>
 </html>
