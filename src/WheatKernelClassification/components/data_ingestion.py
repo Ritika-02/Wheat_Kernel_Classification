@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd 
 import os 
 import sys
+
 from src.WheatKernelClassification.logger import logging
 from src.WheatKernelClassification.exception import customexception
 from sklearn.model_selection import train_test_split
@@ -28,12 +29,14 @@ class DataIngestion:
             os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)), exist_ok= True)
             data.to_csv(self.ingestion_config.raw_data_path,index=False)
             logging.info("I have saved the raw data in artifact folder")
-
-
+            
             logging.info("Here I have performed train test split")
 
             train_data, test_data = train_test_split(data, test_size=0.25)
+            #logging.info(f'Train  Head : \n {train_data.head().to_string()}')
+
             logging.info("train test split completed")
+
             train_data.to_csv(self.ingestion_config.train_data_path,index= False)
             test_data.to_csv(self.ingestion_config.test_data_path,index=False)
 

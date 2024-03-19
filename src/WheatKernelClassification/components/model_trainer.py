@@ -47,14 +47,15 @@ class ModelTrainer:
                 'LogisticRegression': LogisticRegression(),
                 'DecisionTreeClassifier': DecisionTreeClassifier(),
                 'KNeighborsClassifier': KNeighborsClassifier(),
+                'RandomForestClassifier': RandomForestClassifier(),
                 'GaussianNB': GaussianNB()
             }
 
             param_grids = {
                 'LogisticRegression': {
-                    'C': [0.001, 0.01, 0.1, 1.0, 10, 100, 1000],
+                    'C': [0.001, 0.01, 0.1, 1.0, 10, 50],
                     'class_weight': ['balanced'],
-                    'solver': ['lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky', 'sag', 'saga']
+                    'solver': ['liblinear']
                 },
                 'DecisionTreeClassifier': {
                     'criterion': ['gini', 'entropy', 'log_loss'],
@@ -66,7 +67,11 @@ class ModelTrainer:
                     'weights': ['uniform', 'distance'],
                     'p': [1, 2, 3, 4]
                 },
-                # Add parameters for other classifiers if needed
+                'RandomForestClassifier': {
+                    'n_estimators': [50, 150, 500],
+                    'criterion': ['gini', 'entropy'],
+                    'max_features': ['sqrt', 'log2']
+                },
             }
 
             model_reports = {}
