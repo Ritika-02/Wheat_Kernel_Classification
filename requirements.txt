@@ -3,7 +3,10 @@ scikit-learn
 numpy
 Seaborn
 ipykernel
+Flask
 
+mlflow==2.2.2
+dvc
 
 
 #-e .
