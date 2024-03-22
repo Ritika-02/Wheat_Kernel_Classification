@@ -76,6 +76,7 @@
         .then(data => {
             const predictionResult = document.createElement('p');
             predictionResult.textContent = `Wheat variety classification: ${data.result}`;
+            predictionResult.classList.add('prediction-result');
 
             const predictionResultBox = document.getElementById('prediction-result');
             predictionResultBox.innerHTML = '';
