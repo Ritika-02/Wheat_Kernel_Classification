@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Wheat_Kernel_Classification/mlruns/0/24094e67bdfd4090beb2e635f9860b3b/artifacts
+end_time: 1711135702432
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 24094e67bdfd4090beb2e635f9860b3b
+run_name: gifted-whale-393
+run_uuid: 24094e67bdfd4090beb2e635f9860b3b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711135696732
+status: 3
+tags: []
+user_id: Ritika

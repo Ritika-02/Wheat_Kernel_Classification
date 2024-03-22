@@ -14,8 +14,8 @@ class ModelEvaluation:
 
     def eval_metrics(self,actual,pred):
         acc_score = np.sqrt(accuracy_score(actual, pred))# here is RMSE
-        prec_score = precision_score(actual, pred)# here is MAE
-        rec_score = recall_score(actual, pred)# here is r3 value
+        prec_score = precision_score(actual, pred, average='macro')# here is MAE
+        rec_score = recall_score(actual, pred, average='macro')# here is r3 value
         return acc_score,prec_score,rec_score
     
     def initiate_model_evaluation(self,train_array,test_array):
@@ -28,7 +28,7 @@ class ModelEvaluation:
 
             mlflow.set_registry_uri("https://dagshub.com/ritikabhandari049/Wheat_Kernel_Classification.mlflow")
 
-            tracking_url_type_store = urlparse(mlflow.get_tracking_url()).scheme
+            tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
             print(tracking_url_type_store)
 
