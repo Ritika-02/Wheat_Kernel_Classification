@@ -6,55 +6,59 @@
     <link rel="stylesheet" href="static\style.css">
 </head>
 <body>
-<div class = 'imgContainer'>
-    <img src="static\w0.png" alt="contact image">
-    
-<div class="contactContainer">
-    <form id="prediction-form" action="{{url_for('predict_datapoint')}}" method="POST">
-        <div class="form-group">
-            <label for="area">Area:</label>
-            <input type="text" id="area" name="area" placeholder="Enter Area (float)">
-        </div>
+<div class="container">
+    <div class = 'imgContainer'>
+        <img src="static\w0.png" alt="contact image">
+    </div>
+    <div class="content">
+    <div class="contactContainer">
+        <form id="prediction-form" action="{{url_for('predict_datapoint')}}" method="POST">
+            <div class="form-group">
+                <label for="area">Area:</label>
+                <input type="text" id="area" name="area" placeholder="Enter Area (float)">
+            </div>
 
-        <div class="form-group">
-            <label for="perimeter">Perimeter:</label>
-            <input type="text" id="perimeter" name="perimeter" placeholder="Enter Perimeter(float)">
-        </div>
+            <div class="form-group">
+                <label for="perimeter">Perimeter:</label>
+                <input type="text" id="perimeter" name="perimeter" placeholder="Enter Perimeter(float)">
+            </div>
 
-        <div class="form-group">
-            <label for="compactness">Compactness:</label>
-            <input type="text" id="compactness" name="compactness" placeholder="Enter Compactness (float)">
-        </div>
+            <div class="form-group">
+                <label for="compactness">Compactness:</label>
+                <input type="text" id="compactness" name="compactness" placeholder="Enter Compactness (float)">
+            </div>
 
-        <div class="form-group">
-            <label for="length_of_kernel">Length_of_kernel:</label>
-            <input type="text" id="length_of_kernel" name="length_of_kernel" placeholder="Enter length_of_kernel (float)">
-        </div>
+            <div class="form-group">
+                <label for="length_of_kernel">Length_of_kernel:</label>
+                <input type="text" id="length_of_kernel" name="length_of_kernel" placeholder="Enter length_of_kernel (float)">
+            </div>
 
-        <div class="form-group">
-            <label for="width_of_kernel">Width_of_kernel:</label>
-            <input type="text" id="width_of_kernel" name="width_of_kernel" placeholder="Enter width_of_kernel (float)">
-        </div>
+            <div class="form-group">
+                <label for="width_of_kernel">Width_of_kernel:</label>
+                <input type="text" id="width_of_kernel" name="width_of_kernel" placeholder="Enter width_of_kernel (float)">
+            </div>
 
-        <div class="form-group">
-            <label for="asymmetry_coefficient">Asymmetry_coefficient:</label>
-            <input type="text" id="asymmetry_coefficient" name="asymmetry_coefficient" placeholder="Enter asymmetry_coefficient (float)">
-        </div>
+            <div class="form-group">
+                <label for="asymmetry_coefficient">Asymmetry_coefficient:</label>
+                <input type="text" id="asymmetry_coefficient" name="asymmetry_coefficient" placeholder="Enter asymmetry_coefficient (float)">
+            </div>
 
-        <div class="form-group">
-            <label for="length_of_kernel_groove">Length_of_kernel_groove:</label>
-            <input type="text" id="length_of_kernel_groove" name="length_of_kernel_groove" placeholder="Enter length_of_kernel_groove (float)">
-        </div>
+            <div class="form-group">
+                <label for="length_of_kernel_groove">Length_of_kernel_groove:</label>
+                <input type="text" id="length_of_kernel_groove" name="length_of_kernel_groove" placeholder="Enter length_of_kernel_groove (float)">
+            </div>
 
-        <div style="clear: both;">
-            <input type="submit" value="submit">
-            <button type="button" onclick="clearForm()">Clear</button>
-        </div>
-    </form>
+            <div style="clear: both;">
+                <input type="submit" value="submit">
+                <button type="button" onclick="clearForm()">Clear</button>
+            </div>
+        </form>
+        <div id="prediction-result" class="prediction-box">Wheat variety classification : </div>
+    </div>
 </div>
 </div>
 
-<div id="prediction-result"></div>
+
 
 <script>
     function clearForm() {
@@ -63,14 +67,19 @@
 
     document.getElementById('prediction-form').addEventListener('submit',function(event) {
         event.preventDefault();
-
+    
         fetch('{{ url_for('predict_datapoint') }}', {
             method: 'POST',
             body: new FormData(this),
         })
         .then(Response => Response.json())
         .then(data => {
-            document.getElementById('prediction-result').innerHTML = `Wheat Kernel variety: ${data.result}`;
+            const predictionResult = document.createElement('p');
+            predictionResult.textContent = `Wheat variety classification: ${data.result}`;
+
+            const predictionResultBox = document.getElementById('prediction-result');
+            predictionResultBox.innerHTML = '';
+            predictionResultBox.appendChild(predictionResult);
 
         })
         .catch(error => console.error('Error:', error));
