@@ -4,11 +4,7 @@ from src.WheatKernelClassification.logger import logging
 
 app = Flask(__name__)
 
-@app.route('/')
-def home_page():
-    return render_template('index.html')
-
-@app.route('/predict', methods = ['GET','POST'])
+@app.route('/', methods = ['GET','POST'])
 def predict_datapoint():
     if request.method == 'GET':
         return render_template('form.html')
@@ -32,12 +28,12 @@ def predict_datapoint():
 
         pred = predict_pipeline.predict(final_data)
 
-        variety_labels = {3: 'Canadian', 2: 'Rosa', 1:'Kama'}
+        variety_labels = {0: 'Canadian', 2: 'Rosa', 1:'Kama'}
         predicted_label = variety_labels[pred[0]]
 
-        #return render_template('result.html', final_result = predicted_label)
+    
         return jsonify({'result': predicted_label})
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
