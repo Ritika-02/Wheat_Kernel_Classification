@@ -1,0 +1,16 @@
+stages:
+  training:
+    cmd : python src\WheatKernelClassification\pipelines\training_pipeline.py
+    deps:
+      - src\WheatKernelClassification\pipelines\training_pipeline.py
+      - src\WheatKernelClassification\components\data_ingestion.py
+      - src\WheatKernelClassification\components\data_transformation.py
+      - src\WheatKernelClassification\components\model_trainer.py
+      - src\WheatKernelClassification\components\model_evaluation.py
+
+    outs:
+      - artifacts\raw.csv
+      - artifacts\test.csv
+      - artifacts\train.csv
+      - artifacts\preprocessor.pkl
+      - artifacts\model.pkl

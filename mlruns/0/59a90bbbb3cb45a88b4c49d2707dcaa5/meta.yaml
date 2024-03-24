@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Wheat_Kernel_Classification/mlruns/0/59a90bbbb3cb45a88b4c49d2707dcaa5/artifacts
+end_time: 1711269775951
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 59a90bbbb3cb45a88b4c49d2707dcaa5
+run_name: classy-shrike-563
+run_uuid: 59a90bbbb3cb45a88b4c49d2707dcaa5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711269770484
+status: 3
+tags: []
+user_id: Ritika
