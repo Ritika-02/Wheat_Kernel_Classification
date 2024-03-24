@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  training:
+    cmd: python src\WheatKernelClassification\pipelines\training_pipeline.py
+    deps:
+    - path: src\WheatKernelClassification\components\data_ingestion.py
+      hash: md5
+      md5: eae66867e6dc692f1e264f8f44e5d8e2
+      size: 2003
+    - path: src\WheatKernelClassification\components\data_transformation.py
+      hash: md5
+      md5: 1929c74ea1269d0ab8e0734310cc4e34
+      size: 4568
+    - path: src\WheatKernelClassification\components\model_evaluation.py
+      hash: md5
+      md5: 10aa8752d18e45d47f01bb5e2c348c9a
+      size: 2327
+    - path: src\WheatKernelClassification\components\model_trainer.py
+      hash: md5
+      md5: 37e05433b2cbd0fb191a6fcaa0592333
+      size: 4681
+    - path: src\WheatKernelClassification\pipelines\training_pipeline.py
+      hash: md5
+      md5: b823e6ca2c1156438db7beeb672395cd
+      size: 1080
+    outs:
+    - path: artifacts\model.pkl
+      hash: md5
+      md5: 553a46495bfb17a09863b1533f713eeb
+      size: 887
+    - path: artifacts\preprocessor.pkl
+      hash: md5
+      md5: f5b7f066d7545d996bc324f82a5b101d
+      size: 1967
+    - path: artifacts\raw.csv
+      hash: md5
+      md5: c5e4826f23eca5a5bf578eb5f854d27e
+      size: 9511
+    - path: artifacts\test.csv
+      hash: md5
+      md5: 82eceb609af73ec902b9317904136da5
+      size: 2440
+    - path: artifacts\train.csv
+      hash: md5
+      md5: 1861e1eb89ae1ddcbb7ae01dc9b5620a
+      size: 7115
