@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Wheat_Kernel_Classification/mlruns/0/f8bc191f61c948128e792b438c5c16e9/artifacts
+end_time: 1711270723697
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f8bc191f61c948128e792b438c5c16e9
+run_name: masked-loon-288
+run_uuid: f8bc191f61c948128e792b438c5c16e9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711270718073
+status: 3
+tags: []
+user_id: Ritika
